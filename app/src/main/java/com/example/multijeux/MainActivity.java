@@ -2,6 +2,7 @@ package com.example.multijeux;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -62,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
 			public void onClick(DialogInterface dialog, int which) {
 				int selectedNumber = (int) spinner.getSelectedItem();
 				Toast.makeText(MainActivity.this, "Nombre sélectionné : " + selectedNumber, Toast.LENGTH_SHORT).show();
+
+				// Lancer l'activité TicTacToe
+				Intent intent = new Intent(MainActivity.this, TicTacToe.class);
+				// Si vous voulez transmettre le nombre sélectionné à TicTacToe
+				intent.putExtra("selectedNumber", selectedNumber);
+				startActivity(intent);
 			}
 		});
 
