@@ -42,27 +42,42 @@ public class TicTacToe extends AppCompatActivity {
         board = new String[size][size]; // Créer la grille de taille variable
         buttons = new Button[size][size]; // Créer le tableau de boutons de taille variable
 
-        gridLayout.setRowCount(size); // Définir le nombre de lignes
-        gridLayout.setColumnCount(size); // Définir le nombre de colonnes
+        // Récupérer la largeur de l'écran
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
 
-        // Calculer la largeur des cases pour qu'elles remplissent l'écran
-        int buttonWidth = getResources().getDisplayMetrics().widthPixels / size;
+        // Calculer la largeur de la grille (90% de la largeur de l'écran)
+        int gridWidth = (int) (screenWidth * 0.9);
+
+        // Récupérer le padding de la grille (4dp)
+        int padding = (int) (4 * getResources().getDisplayMetrics().density); // Convertir en pixels
+
+        // Calculer la largeur disponible pour les boutons
+        int availableWidth = gridWidth - (2 * padding); // Retirer les marges gauche et droite
+
+        // Calculer la taille des boutons en fonction de la largeur disponible
+        int buttonSize = availableWidth / size; // Diviser par la taille de la grille pour chaque cellule
+
+        // Définir le nombre de lignes et de colonnes de la grille
+        gridLayout.setRowCount(size);
+        gridLayout.setColumnCount(size);
+
+        // Appliquer le padding global à la grille
+        gridLayout.setPadding(padding, padding, padding, padding);
 
         // Créer les boutons pour la grille
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 buttons[i][j] = new Button(this);
-                buttons[i][j].setTextSize(30);
+                buttons[i][j].setTextSize(30); // Ajuster la taille du texte des boutons
 
-                // Définir la largeur et la hauteur du bouton
+                // Créer des paramètres de mise en page pour chaque bouton
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                params.width = buttonWidth; // Définir la largeur
-                params.height = buttonWidth; // Garder la hauteur égale à la largeur pour avoir des cases carrées
+                params.width = buttonSize; // Définir la largeur de la cellule
+                params.height = buttonSize; // Garder la hauteur égale à la largeur pour avoir des cases carrées
                 buttons[i][j].setLayoutParams(params);
 
-                final int row = i, col = j;
-
                 // Ajouter un listener pour chaque bouton
+                final int row = i, col = j;
                 buttons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -74,7 +89,17 @@ public class TicTacToe extends AppCompatActivity {
                 gridLayout.addView(buttons[i][j]);
             }
         }
+
+        // Appliquer les poids (weight) aux colonnes et aux lignes pour que la grille occupe l'espace nécessaire
+        for (int i = 0; i < size; i++) {
+            GridLayout.LayoutParams columnParams = new GridLayout.LayoutParams();
+            columnParams.width = 0; // Ne pas définir la largeur explicitement
+            columnParams.rowSpec = GridLayout.spec(i, 1, 1f); // Spécifier la répartition égale de l'espace pour chaque ligne
+            columnParams.columnSpec = GridLayout.spec(i, 1, 1f); // Répartition égale pour chaque colonne
+            gridLayout.setRowCount(size);
+        }
     }
+
 
     // Gérer le clic sur une case
     private void onCellClicked(int row, int col) {
@@ -115,7 +140,7 @@ public class TicTacToe extends AppCompatActivity {
 
     // Vérifier si un joueur a gagné
     private boolean checkWinner() {
-        // Vérification des lignes et des colonnes pour 3 symboles alignés
+        // Vérification des lignes et des colonnes
         for (int i = 0; i < gridSize; i++) {
             boolean rowWin = true, colWin = true;
             for (int j = 0; j < gridSize; j++) {
@@ -131,7 +156,7 @@ public class TicTacToe extends AppCompatActivity {
             }
         }
 
-        // Vérification des diagonales pour 3 symboles alignés
+        // Vérification des diagonales
         boolean diagonal1Win = true, diagonal2Win = true;
         for (int i = 0; i < gridSize; i++) {
             if (board[i][i] == null || !board[i][i].equals(board[0][0])) {
