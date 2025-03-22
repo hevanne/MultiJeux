@@ -36,6 +36,23 @@ public class MainActivity extends AppCompatActivity {
 				showNumberSelectionDialog();
 			}
 		});
+
+		Button button2 = findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, LifeGame.class);
+			}
+		});
+
+		Button button3 = findViewById(R.id.button3);
+		button3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, LineTracker.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	private void showNumberSelectionDialog() {
