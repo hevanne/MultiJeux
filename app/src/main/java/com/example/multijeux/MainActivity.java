@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -49,10 +50,56 @@ public class MainActivity extends AppCompatActivity {
 		button3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				showShapeSelectionDialog();
+			}
+		});
+	}
+
+	private void showShapeSelectionDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Select a shape");
+
+		LinearLayout layout = new LinearLayout(this);
+		layout.setOrientation(LinearLayout.VERTICAL);
+
+		final Spinner spinnerShape = new Spinner(this);
+		String[] shapes = {"Square", "Circle", "Triangle"};
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, shapes);
+		spinnerShape.setAdapter(adapter);
+		layout.addView(spinnerShape);
+
+		final Spinner spinnerDifficulty = new Spinner(this);
+		String[] difficulties = {"easy", "medium", "hard"};
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, difficulties);
+		spinnerDifficulty.setAdapter(adapter2);
+		layout.addView(spinnerDifficulty);
+
+		builder.setView(layout);
+
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+
+		builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				String selectedShape = (String) spinnerShape.getSelectedItem();
+				Toast.makeText(MainActivity.this, "Selected shape : " + selectedShape, Toast.LENGTH_SHORT).show();
+				String selectedDifficulty = (String) spinnerDifficulty.getSelectedItem();
+				Toast.makeText(MainActivity.this, "Selected difficulty : " + selectedDifficulty, Toast.LENGTH_SHORT).show();
+
 				Intent intent = new Intent(MainActivity.this, LineTracker.class);
+
+				intent.putExtra("selectedShape", selectedShape);
+				intent.putExtra("selectedDifficulty", selectedDifficulty);
 				startActivity(intent);
 			}
 		});
+
+		builder.show();
 	}
 
 	private void showNumberSelectionDialog() {
