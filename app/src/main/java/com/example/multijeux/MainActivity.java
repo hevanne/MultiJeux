@@ -53,6 +53,23 @@ public class MainActivity extends AppCompatActivity {
 				showShapeSelectionDialog();
 			}
 		});
+
+		Button button5 = findViewById(R.id.button5);
+		button5.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, Help.class);
+				startActivity(intent);
+			}
+		});
+
+		Button button6 = findViewById(R.id.button6);
+		button6.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 	}
 
 	private void showShapeSelectionDialog() {

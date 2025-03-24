@@ -29,7 +29,13 @@
 
         <activity
             android:name=".LineTracker"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensorPortrait">
+        </activity>
+
+        <activity
+            android:name=".Help"
+            android:exported="true" >
         </activity>
 
     </application>
