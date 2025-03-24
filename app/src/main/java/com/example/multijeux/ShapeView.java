@@ -93,7 +93,7 @@ public class ShapeView extends View {
                 paint.setColor(Color.GREEN);
                 break;
             case "medium" :
-                paint.setColor(Color.YELLOW);
+                paint.setColor(Color.parseColor("#FF8000"));
                 break;
             case "hard" :
                 paint.setColor(Color.RED);
@@ -159,27 +159,27 @@ public class ShapeView extends View {
         if (cursor != null) {
             if (this.shape.equals("Square")) {
                 if (areaSquare(posX, posY)) {
-                    cursor.setColor(Color.RED);
+                    cursor.setColor(Color.WHITE);
                     scoreIn++;
                 } else {
-                    cursor.setColor(Color.BLUE);
+                    cursor.setColor(Color.parseColor("#ADD8E6"));
                 }
             }
             if (this.shape.equals("Circle")) {
                 if (areaCircle(posX, posY)) {
-                    cursor.setColor(Color.RED);
+                    cursor.setColor(Color.WHITE);
                     scoreIn++;
                 } else {
-                    cursor.setColor(Color.BLUE);
+                    cursor.setColor(Color.parseColor("#ADD8E6"));
                 }
             }
 
             if (this.shape.equals("Triangle")) {
                 if (areaTriangle(posX, posY)) {
-                    cursor.setColor(Color.RED);
+                    cursor.setColor(Color.WHITE);
                     scoreIn++;
                 } else {
-                    cursor.setColor(Color.BLUE);
+                    cursor.setColor(Color.parseColor("#ADD8E6"));
                 }
             }
         }
