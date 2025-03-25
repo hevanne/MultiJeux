@@ -1,12 +1,5 @@
 # MultiJeux
 
-## Table des matières
-- [Description](#description)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Auteurs](#auteurs)
-- [Version](#version)
-
 ## 📜 Description
 MultiJeux est une application proposant plusieurs jeux en un seul endroit. Elle permet aux utilisateurs de profiter de tois jeux différents dans une interface simple et épurée.
 
