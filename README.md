@@ -4,9 +4,6 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Contributions](#contributions)
-- [Licence](#licence)
-- [Remerciements](#remerciements)
 - [Auteurs](#auteurs)
 - [Version](#version)
 
