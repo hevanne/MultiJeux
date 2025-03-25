@@ -151,7 +151,7 @@ public class LifeGame extends AppCompatActivity {
         }
 
         private void setupPaints() {
-            cellPaint.setColor(Color.BLACK);
+            cellPaint.setColor(Color.BLUE);
             cellPaint.setStyle(Paint.Style.FILL);
             gridPaint.setColor(Color.GRAY);
             gridPaint.setStyle(Paint.Style.STROKE);
