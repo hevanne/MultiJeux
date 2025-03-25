@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
 			return insets;
 		});
 
-		Button button = findViewById(R.id.button);
-		button.setOnClickListener(new View.OnClickListener() {
+		Button ticTacToeButton = findViewById(R.id.button);
+		ticTacToeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showNumberSelectionDialog();
+				// Lancer directement l'activité TicTacToe avec une taille par défaut
+				Intent intent = new Intent(MainActivity.this, TicTacToe.class);
+				intent.putExtra("GRID_SIZE", 3); // Taille par défaut 3x3
+				startActivity(intent);
 			}
 		});
 
@@ -116,44 +119,6 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		builder.show();
-	}
-
-	private void showNumberSelectionDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Sélectionner un nombre");
-
-		// Création du Spinner avec les nombres de 3 à 10
-		final Spinner spinner = new Spinner(this);
-		Integer[] numbers = {3, 4, 5, 6, 7, 8, 9, 10};
-		ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, numbers);
-		spinner.setAdapter(adapter);
-		builder.setView(spinner);
-
-		// Bouton Annuler
-		builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		});
-
-		// Bouton Confirmer
-		builder.setPositiveButton("Confirmer", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				int selectedNumber = (int) spinner.getSelectedItem();
-				Toast.makeText(MainActivity.this, "Nombre sélectionné : " + selectedNumber, Toast.LENGTH_SHORT).show();
-
-				// Lancer l'activité TicTacToe
-				Intent intent = new Intent(MainActivity.this, TicTacToe.class);
-				// Si vous voulez transmettre le nombre sélectionné à TicTacToe
-				intent.putExtra("selectedNumber", selectedNumber);
-				startActivity(intent);
-			}
-		});
-
-		// Affichage de la boîte de dialogue
 		builder.show();
 	}
 }

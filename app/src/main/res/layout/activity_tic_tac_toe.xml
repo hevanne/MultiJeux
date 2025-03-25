@@ -1,75 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TicTacToe">
+    android:padding="16dp">
 
-    <!-- Affichage du statut du jeu (qui joue actuellement) -->
     <TextView
-        android:id="@+id/statusTextView"
+        android:id="@+id/scoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tour du joueur X"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:textAlignment="center"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
-    <!-- Grille de jeu -->
+    <TextView
+        android:id="@+id/turnIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreTextView"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
     <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scoreLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusTextView"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.9"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:background="@android:color/darker_gray"/>
-
-    <!-- Score affiché en bas -->
-    <LinearLayout
-        android:id="@+id/scoreLayout"
+        android:id="@+id/gameGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_below="@id/turnIndicator"
+        android:layout_above="@+id/bottomSpace"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
-        <TextView
-            android:id="@+id/playerScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Joueur (X): 0"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="16dp" />
+    <Space
+        android:id="@+id/bottomSpace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"/>
 
-        <TextView
-            android:id="@+id/aiScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ordinateur (O): 0"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
