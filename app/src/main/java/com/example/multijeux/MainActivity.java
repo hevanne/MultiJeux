@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private void showShapeSelectionDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Select a shape");
+		builder.setTitle("Sélectionner une forme et une difficulté");
 
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);

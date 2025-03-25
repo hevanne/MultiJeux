@@ -6,4 +6,6 @@
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
     <color name="light_blue">#ADD8E6</color>
+
+    <color name="adaptive_text_color">#FF000000</color>
 </resources>
