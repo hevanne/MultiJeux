@@ -26,7 +26,11 @@
             android:name=".TicTacToe"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".LifeGame"
+            android:exported="true">
 
+        </activity>
         <activity
             android:name=".LineTracker"
             android:exported="true"
