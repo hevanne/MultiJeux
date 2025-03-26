@@ -27,6 +27,8 @@ public class LifeGame extends AppCompatActivity {
     private TextView iterationTextView;
     private Spinner sizeSpinner, densitySpinner;
 
+    // Override : vérif pour le compilateur et la lisibilité , à retirer une fois finie 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -228,7 +230,7 @@ public class LifeGame extends AppCompatActivity {
             return arraysEqual(previousStates.get(previousStates.size()-1),
                     previousStates.get(previousStates.size()-2));
         }
-
+        // Vérif pour pas que ça se repete à l'infi
         public boolean isPeriodic() {
             if (previousStates.size() < 4) return false;
             boolean[][] current = previousStates.get(previousStates.size()-1);
