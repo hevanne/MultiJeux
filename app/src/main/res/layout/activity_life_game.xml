@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-
+    <!-- Version avec un Canva possible , dispo sur la v1, plus simple avec le linear --> 
     <!-- Configuration Panel -->
     <LinearLayout
         android:layout_width="match_parent"
